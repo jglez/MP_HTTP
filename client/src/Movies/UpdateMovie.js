@@ -1,16 +1,24 @@
 import React, { useState } from 'react'
 
-function UpdateMovie() {
+function UpdateMovie(props) {
   const [movieFormValues, setMovieFormValues] = useState('')
+
+  const { movies } = props
+
+  // function updateMovie() {
+  //   return 
+  // }
 
   return (
     <>
-      <form>
+      <h1>Edit the movie!</h1>
+
+      {/* <form>
         <input
           name='movie'
           type='text'
         />
-      </form>
+      </form> */}
     </>
   )
 }

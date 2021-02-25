@@ -13,9 +13,14 @@ const App = () => {
   const getMovieList = () => {
     axios
       .get("http://localhost:5000/api/movies")
-      .then(res => setMovieList(res.data))
+      .then(res => {
+        console.log('GET request data:', res.data)
+        setMovieList(res.data)
+      })
       .catch(err => console.log(err.response));
   };
+
+  console.log('movieList state:', movieList)
 
   const addToSavedList = movie => {
     setSavedList([...savedList, movie]);
@@ -39,7 +44,7 @@ const App = () => {
 
       {/* dynamic url - component only renders when we add a number at the end */}
       <Route path='/update-movie/:id'>
-        <UpdateMovie />
+        <UpdateMovie movies={movieList} />
       </Route>
     </>
   );
