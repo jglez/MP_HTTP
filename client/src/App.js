@@ -9,6 +9,7 @@ import axios from 'axios';
 const App = () => {
   const [savedList, setSavedList] = useState([]);
   const [movieList, setMovieList] = useState([]);
+  const [movieToUpdate, setMovieToUpdate] = useState([])
 
   const getMovieList = () => {
     axios
@@ -26,6 +27,10 @@ const App = () => {
     setSavedList([...savedList, movie]);
   };
 
+  const addMovieToUpdate = movie => {
+    setMovieToUpdate(movie)
+  }
+
   useEffect(() => {
     getMovieList();
   }, []);
@@ -39,12 +44,12 @@ const App = () => {
       </Route>
 
       <Route path="/movies/:id">
-        <Movie addToSavedList={addToSavedList} />
+        <Movie addToSavedList={addToSavedList} addMovieToUpdate={addMovieToUpdate} />
       </Route>
 
       {/* dynamic url - component only renders when we add a number at the end */}
       <Route path='/update-movie/:id'>
-        <UpdateMovie movies={movieList} />
+        <UpdateMovie movieToUpdate={movieToUpdate} />
       </Route>
     </>
   );
