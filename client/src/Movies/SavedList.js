@@ -4,7 +4,9 @@ import { NavLink, Link } from 'react-router-dom';
 function SavedList({ list }) {
   return (
     <div className="saved-list">
+
       <h3>Saved Movies:</h3>
+
       {list.map(movie => {
         return (
           <NavLink
@@ -16,6 +18,7 @@ function SavedList({ list }) {
           </NavLink>
         );
       })}
+
       <div className="home-button">
         <Link to="/">Home</Link>
       </div>
